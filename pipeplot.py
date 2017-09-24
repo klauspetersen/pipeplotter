@@ -26,6 +26,7 @@ parser = argparse.ArgumentParser(description='Process some integers.')
 parser.add_argument('--names', metavar='N', type=str, nargs='+', help='Column names')
 parser.add_argument('--xlimit', type=int, nargs='?', default='1000', help='Buffer size')
 parser.add_argument('--interval', type=int, nargs='?', default='10', help='Update interval in ms')
+parser.add_argument("--verbose", help="increase output verbosity", action="store_true")
 args = parser.parse_args()
 
 def shift(xs, n):
@@ -42,6 +43,8 @@ def readlines():
     global curves, data, plot
     line = sys.stdin.readline()
     cols = line.split(' ')
+    if args.verbose:
+        print cols
     if readlines.first:
         plot.addLegend()
         readlines.first = False
@@ -57,8 +60,11 @@ def readlines():
             pencolorsel = pencolorsel + 1
 
     for i in range(len(cols)):
-        data[i] = shift(data[i], 1)
-        data[i][0] = float(cols[i])
+        try:
+            data[i] = shift(data[i], 1)
+            data[i][0] = float(cols[i])
+        except ValueError:
+            print "ValueError:", cols
 readlines.first = True
 
 def update():
