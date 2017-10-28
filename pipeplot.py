@@ -1,6 +1,4 @@
 #!/usr/bin/python
-from time import sleep
-from threading import Thread
 from pyqtgraph.Qt import QtGui, QtCore
 import numpy as np
 import pyqtgraph as pg
