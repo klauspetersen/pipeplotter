@@ -54,7 +54,6 @@ def readlines():
                 plotName = args.names[i]
             else:
                 plotName = "-"
-            print "plotName:" + plotName
             curves.append(plot.plot(pen=pencolors[pencolorsel%8], name=plotName))
             pencolorsel = pencolorsel + 1
 
