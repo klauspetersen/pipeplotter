@@ -42,7 +42,8 @@ def readlines():
     line = sys.stdin.readline()
     cols = line.split(' ')
     if args.verbose:
-        print cols
+        #print  ' '.join(cols)
+        sys.stdout.write(' '.join(cols))
     if readlines.first:
         plot.addLegend()
         readlines.first = False
