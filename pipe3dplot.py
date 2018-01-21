@@ -47,11 +47,14 @@ def shift(xs, n):
 def update():
     global n, plt_list, xyz_arr
     # Read line from stdin
-    line = sys.stdin.readline()
+    line = sys.stdin.readline().rstrip()
     # Store number for each column
     cols = line.split(' ')
 
+    print "Cols:" + str(len(cols))
+    print cols
     if len(cols) > 1:
+        print "A"
         # Convert list of strings to list of floats for y axis
         z = np.array(map(float, cols))  * 30
         y = np.zeros(len(cols))
